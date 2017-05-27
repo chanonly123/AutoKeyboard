@@ -12,8 +12,23 @@
 		F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C641ED9714800C3EDFD /* Main.storyboard */; };
 		F3238C681ED9714800C3EDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3238C671ED9714800C3EDFD /* Assets.xcassets */; };
 		F3238C6B1ED9714800C3EDFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */; };
-		F3238CA41ED9785700C3EDFD /* AutoKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3238CA31ED9785700C3EDFD /* AutoKeyboard.framework */; };
+		F3238CA81ED9A04400C3EDFD /* AutoKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3238CA71ED9A04400C3EDFD /* AutoKeyboard.framework */; };
+		F3238CA91ED9A04400C3EDFD /* AutoKeyboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F3238CA71ED9A04400C3EDFD /* AutoKeyboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3238CAA1ED9A04400C3EDFD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F3238CA91ED9A04400C3EDFD /* AutoKeyboard.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Keyborad Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +39,7 @@
 		F3238C6A1ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3238C6C1ED9714800C3EDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3238CA31ED9785700C3EDFD /* AutoKeyboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoKeyboard.framework; path = "../../../Library/Developer/Xcode/DerivedData/AutoKeybord-dgwcvupttjydhtaotiaarmsbgrfz/Build/Products/Debug-iphonesimulator/AutoKeyboard.framework"; sourceTree = "<group>"; };
+		F3238CA71ED9A04400C3EDFD /* AutoKeyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AutoKeyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3238CA41ED9785700C3EDFD /* AutoKeyboard.framework in Frameworks */,
+				F3238CA81ED9A04400C3EDFD /* AutoKeyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +57,7 @@
 		F3238C541ED9714800C3EDFD = {
 			isa = PBXGroup;
 			children = (
+				F3238CA71ED9A04400C3EDFD /* AutoKeyboard.framework */,
 				F3238C5F1ED9714800C3EDFD /* Auto Keyborad Demo */,
 				F3238C5E1ED9714800C3EDFD /* Products */,
 				F3238CA21ED9785700C3EDFD /* Frameworks */,
@@ -86,6 +103,7 @@
 				F3238C591ED9714800C3EDFD /* Sources */,
 				F3238C5A1ED9714800C3EDFD /* Frameworks */,
 				F3238C5B1ED9714800C3EDFD /* Resources */,
+				F3238CAA1ED9A04400C3EDFD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,6 +334,7 @@
 				F3238C711ED9714800C3EDFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
