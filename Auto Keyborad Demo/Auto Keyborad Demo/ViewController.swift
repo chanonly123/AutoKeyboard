@@ -14,7 +14,6 @@ fileprivate var savedFrame : CGRect!
 class ViewController: UIViewController {
 	
 	@IBOutlet weak var tfAny: UITextField!
-	@IBOutlet weak var buttonResign: UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,7 +32,6 @@ class ViewController: UIViewController {
 	@IBAction func bResingTap(_ sender: Any) {
 		tfAny.resignFirstResponder()
 	}
-		
 }
 
 

@@ -6,10 +6,74 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Auto Keyboard-->
+        <!--Auto Keyboard Demo-->
+        <scene sceneID="OP8-xa-c8i">
+            <objects>
+                <viewController id="Tu2-nt-tDa" customClass="ViewController" customModule="Auto_Keyborad_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZU4-Dn-Oq8"/>
+                        <viewControllerLayoutGuide type="bottom" id="TS8-c0-Gak"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ug3-vt-BUj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOd-Ig-xDy">
+                                <rect key="frame" x="16" y="621" width="109" height="30"/>
+                                <state key="normal" title="Resign"/>
+                                <connections>
+                                    <action selector="bResingTap:" destination="Tu2-nt-tDa" eventType="touchUpInside" id="Jfd-vS-e7G"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="image1" translatesAutoresizingMaskIntoConstraints="NO" id="GjC-Kb-O3B">
+                                <rect key="frame" x="0.0" y="106" width="375" height="511"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlA-tt-T3a">
+                                <rect key="frame" x="20" y="72" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NP-Se-tuI">
+                                <rect key="frame" x="141" y="621" width="218" height="30"/>
+                                <state key="normal" title="Scroll View Example"/>
+                                <connections>
+                                    <segue destination="BGR-We-ubx" kind="show" id="1T6-jy-zLe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1NP-Se-tuI" firstAttribute="leading" secondItem="vOd-Ig-xDy" secondAttribute="trailing" constant="16" id="FaM-Lo-7ae"/>
+                            <constraint firstItem="1NP-Se-tuI" firstAttribute="trailing" secondItem="Ug3-vt-BUj" secondAttribute="trailingMargin" id="G3d-QJ-lsn"/>
+                            <constraint firstItem="vOd-Ig-xDy" firstAttribute="top" secondItem="GjC-Kb-O3B" secondAttribute="bottom" constant="4" id="LoG-tk-dHy"/>
+                            <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="vOd-Ig-xDy" secondAttribute="bottom" constant="16" id="PO7-eS-dfZ"/>
+                            <constraint firstItem="GjC-Kb-O3B" firstAttribute="top" secondItem="YlA-tt-T3a" secondAttribute="bottom" constant="4" id="RjE-dV-uiF"/>
+                            <constraint firstItem="vOd-Ig-xDy" firstAttribute="width" secondItem="1NP-Se-tuI" secondAttribute="width" multiplier="1:2" id="TEd-RX-DJx"/>
+                            <constraint firstItem="YlA-tt-T3a" firstAttribute="top" secondItem="ZU4-Dn-Oq8" secondAttribute="bottom" constant="8" id="Wen-in-OcY"/>
+                            <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="1NP-Se-tuI" secondAttribute="bottom" constant="16" id="etB-DA-hdI"/>
+                            <constraint firstItem="GjC-Kb-O3B" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leading" id="lr8-fP-rah"/>
+                            <constraint firstItem="vOd-Ig-xDy" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leading" constant="16" id="pFp-G2-qBa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YlA-tt-T3a" secondAttribute="trailing" constant="4" id="qa2-4O-V2X"/>
+                            <constraint firstAttribute="trailing" secondItem="GjC-Kb-O3B" secondAttribute="trailing" id="qdT-G4-XzE"/>
+                            <constraint firstItem="YlA-tt-T3a" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leadingMargin" constant="4" id="w7W-oR-Pxt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Auto Keyboard Demo" id="M1y-Rb-pcO"/>
+                    <connections>
+                        <outlet property="tfAny" destination="YlA-tt-T3a" id="5Wc-BA-hKJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjb-i3-5Cu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.79999999999995" y="122.78860569715144"/>
+        </scene>
+        <!--Scroll View Example-->
         <scene sceneID="tNG-Cv-MNW">
             <objects>
                 <viewController id="BGR-We-ubx" customClass="ViewController" customModule="Auto_Keyborad_Demo" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,31 +82,31 @@
                         <viewControllerLayoutGuide type="bottom" id="0Wk-hE-Hel"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aqY-ee-BLg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33t-aZ-dOQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-lg-pHz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="869.5"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-fi-ZeY">
-                                                <rect key="frame" x="35" y="155.5" width="305" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-fi-ZeY">
+                                                <rect key="frame" x="35" y="804.5" width="305" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyp-FP-h0W">
-                                                <rect key="frame" x="35" y="90.5" width="305" height="30"/>
+                                                <rect key="frame" x="35" y="739.5" width="305" height="30"/>
                                                 <state key="normal" title="Resign"/>
                                                 <connections>
                                                     <action selector="bResingTap:" destination="BGR-We-ubx" eventType="touchUpInside" id="fN9-2a-v4G"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23U-49-MBH">
-                                                <rect key="frame" x="35" y="35" width="305" height="20.5"/>
-                                                <mutableString key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</mutableString>
+                                                <rect key="frame" x="35" y="35" width="305" height="669.5"/>
+                                                <mutableString key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</mutableString>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -80,15 +144,16 @@
                             <constraint firstAttribute="trailing" secondItem="33t-aZ-dOQ" secondAttribute="trailing" id="ldG-rF-wvG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Auto Keyboard" id="HEv-Vo-Ek7"/>
+                    <navigationItem key="navigationItem" title="Scroll View Example" id="HEv-Vo-Ek7"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
-                        <outlet property="buttonResign" destination="kyp-FP-h0W" id="xro-xv-XpC"/>
                         <outlet property="tfAny" destination="9Df-fi-ZeY" id="bc2-N0-aKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGa-s2-flJ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895" y="123"/>
+            <point key="canvasLocation" x="1538" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OIC-NP-Ard">
@@ -101,12 +166,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BGR-We-ubx" kind="relationship" relationship="rootViewController" id="Stq-K7-ydq"/>
+                        <segue destination="Tu2-nt-tDa" kind="relationship" relationship="rootViewController" id="1J9-1T-fzM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLK-pr-U2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="-30" y="123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="image1" width="736" height="1308"/>
+    </resources>
 </document>

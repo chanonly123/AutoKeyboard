@@ -25,6 +25,7 @@ extension UIViewController {
 	}
 	
 	public func unRegisterAutoKeyboard() {
+		self.view.endEditing(true)
 		autoKeyboardNotifications.forEach {
 			NotificationCenter.default.removeObserver(self, name: $0, object: nil)
 		}
