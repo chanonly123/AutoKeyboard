@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F3238C611ED9714800C3EDFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C601ED9714800C3EDFD /* AppDelegate.swift */; };
+		F3238C631ED9714800C3EDFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C621ED9714800C3EDFD /* ViewController.swift */; };
+		F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C641ED9714800C3EDFD /* Main.storyboard */; };
+		F3238C681ED9714800C3EDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3238C671ED9714800C3EDFD /* Assets.xcassets */; };
+		F3238C6B1ED9714800C3EDFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */; };
+		F3238CA41ED9785700C3EDFD /* AutoKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3238CA31ED9785700C3EDFD /* AutoKeyboard.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Keyborad Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3238C601ED9714800C3EDFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3238C621ED9714800C3EDFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F3238C651ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F3238C671ED9714800C3EDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3238C6A1ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F3238C6C1ED9714800C3EDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3238CA31ED9785700C3EDFD /* AutoKeyboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AutoKeyboard.framework; path = "../../../Library/Developer/Xcode/DerivedData/AutoKeybord-dgwcvupttjydhtaotiaarmsbgrfz/Build/Products/Debug-iphonesimulator/AutoKeyboard.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3238C5A1ED9714800C3EDFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3238CA41ED9785700C3EDFD /* AutoKeyboard.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F3238C541ED9714800C3EDFD = {
+			isa = PBXGroup;
+			children = (
+				F3238C5F1ED9714800C3EDFD /* Auto Keyborad Demo */,
+				F3238C5E1ED9714800C3EDFD /* Products */,
+				F3238CA21ED9785700C3EDFD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F3238C5E1ED9714800C3EDFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3238C5F1ED9714800C3EDFD /* Auto Keyborad Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F3238C601ED9714800C3EDFD /* AppDelegate.swift */,
+				F3238C621ED9714800C3EDFD /* ViewController.swift */,
+				F3238C641ED9714800C3EDFD /* Main.storyboard */,
+				F3238C671ED9714800C3EDFD /* Assets.xcassets */,
+				F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */,
+				F3238C6C1ED9714800C3EDFD /* Info.plist */,
+			);
+			path = "Auto Keyborad Demo";
+			sourceTree = "<group>";
+		};
+		F3238CA21ED9785700C3EDFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3238CA31ED9785700C3EDFD /* AutoKeyboard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F3238C5C1ED9714800C3EDFD /* Auto Keyborad Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3238C6F1ED9714800C3EDFD /* Build configuration list for PBXNativeTarget "Auto Keyborad Demo" */;
+			buildPhases = (
+				F3238C591ED9714800C3EDFD /* Sources */,
+				F3238C5A1ED9714800C3EDFD /* Frameworks */,
+				F3238C5B1ED9714800C3EDFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Auto Keyborad Demo";
+			productName = "Auto Keyborad Demo";
+			productReference = F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3238C551ED9714800C3EDFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = chanonly123;
+				TargetAttributes = {
+					F3238C5C1ED9714800C3EDFD = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 5WW76S3NRC;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F3238C581ED9714800C3EDFD /* Build configuration list for PBXProject "Auto Keyborad Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F3238C541ED9714800C3EDFD;
+			productRefGroup = F3238C5E1ED9714800C3EDFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F3238C5C1ED9714800C3EDFD /* Auto Keyborad Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F3238C5B1ED9714800C3EDFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3238C6B1ED9714800C3EDFD /* LaunchScreen.storyboard in Resources */,
+				F3238C681ED9714800C3EDFD /* Assets.xcassets in Resources */,
+				F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3238C591ED9714800C3EDFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3238C631ED9714800C3EDFD /* ViewController.swift in Sources */,
+				F3238C611ED9714800C3EDFD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F3238C641ED9714800C3EDFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3238C651ED9714800C3EDFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3238C6A1ED9714800C3EDFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F3238C6D1ED9714800C3EDFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F3238C6E1ED9714800C3EDFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3238C701ED9714800C3EDFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5WW76S3NRC;
+				INFOPLIST_FILE = "Auto Keyborad Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chanonly123.Auto-Keyborad-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F3238C711ED9714800C3EDFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5WW76S3NRC;
+				INFOPLIST_FILE = "Auto Keyborad Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chanonly123.Auto-Keyborad-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F3238C581ED9714800C3EDFD /* Build configuration list for PBXProject "Auto Keyborad Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3238C6D1ED9714800C3EDFD /* Debug */,
+				F3238C6E1ED9714800C3EDFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3238C6F1ED9714800C3EDFD /* Build configuration list for PBXNativeTarget "Auto Keyborad Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3238C701ED9714800C3EDFD /* Debug */,
+				F3238C711ED9714800C3EDFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3238C551ED9714800C3EDFD /* Project object */;
+}

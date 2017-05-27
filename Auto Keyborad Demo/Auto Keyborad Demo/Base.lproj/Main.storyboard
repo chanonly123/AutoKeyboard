@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auto Keyboard-->
+        <scene sceneID="tNG-Cv-MNW">
+            <objects>
+                <viewController id="BGR-We-ubx" customClass="ViewController" customModule="Auto_Keyborad_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sgN-SM-ET3"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Wk-hE-Hel"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aqY-ee-BLg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33t-aZ-dOQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-lg-pHz">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-fi-ZeY">
+                                                <rect key="frame" x="35" y="155.5" width="305" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyp-FP-h0W">
+                                                <rect key="frame" x="35" y="90.5" width="305" height="30"/>
+                                                <state key="normal" title="Resign"/>
+                                                <connections>
+                                                    <action selector="bResingTap:" destination="BGR-We-ubx" eventType="touchUpInside" id="fN9-2a-v4G"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23U-49-MBH">
+                                                <rect key="frame" x="35" y="35" width="305" height="20.5"/>
+                                                <mutableString key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="9Df-fi-ZeY" secondAttribute="bottom" constant="35" id="4So-xi-8l1"/>
+                                            <constraint firstItem="23U-49-MBH" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="5YQ-ES-Siy"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Df-fi-ZeY" secondAttribute="trailing" constant="35" id="8lO-pe-2Kc"/>
+                                            <constraint firstItem="kyp-FP-h0W" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="IEc-zn-L7V"/>
+                                            <constraint firstAttribute="trailing" secondItem="kyp-FP-h0W" secondAttribute="trailing" constant="35" id="Lg4-SB-pch"/>
+                                            <constraint firstItem="9Df-fi-ZeY" firstAttribute="top" secondItem="kyp-FP-h0W" secondAttribute="bottom" constant="35" id="QyQ-9Y-5Pb"/>
+                                            <constraint firstItem="23U-49-MBH" firstAttribute="top" secondItem="fMq-lg-pHz" secondAttribute="top" constant="35" id="WsA-ID-1jF"/>
+                                            <constraint firstItem="9Df-fi-ZeY" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="Zcv-W6-62i"/>
+                                            <constraint firstAttribute="trailing" secondItem="23U-49-MBH" secondAttribute="trailing" constant="35" id="iyv-bT-6cP"/>
+                                            <constraint firstItem="kyp-FP-h0W" firstAttribute="top" secondItem="23U-49-MBH" secondAttribute="bottom" constant="35" id="phA-Pw-bee"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fMq-lg-pHz" secondAttribute="trailing" id="R3W-sq-X1R"/>
+                                    <constraint firstItem="fMq-lg-pHz" firstAttribute="leading" secondItem="33t-aZ-dOQ" secondAttribute="leading" id="eJs-4d-GEP"/>
+                                    <constraint firstItem="fMq-lg-pHz" firstAttribute="top" secondItem="33t-aZ-dOQ" secondAttribute="top" id="gCO-7O-hDc"/>
+                                    <constraint firstItem="fMq-lg-pHz" firstAttribute="width" secondItem="33t-aZ-dOQ" secondAttribute="width" id="mxv-Hu-Xc0"/>
+                                    <constraint firstAttribute="bottom" secondItem="fMq-lg-pHz" secondAttribute="bottom" id="nMn-vF-fg3"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0Wk-hE-Hel" firstAttribute="top" secondItem="33t-aZ-dOQ" secondAttribute="bottom" id="17e-Rj-oFB"/>
+                            <constraint firstItem="33t-aZ-dOQ" firstAttribute="leading" secondItem="aqY-ee-BLg" secondAttribute="leading" id="Npe-b0-gf4"/>
+                            <constraint firstItem="33t-aZ-dOQ" firstAttribute="top" secondItem="aqY-ee-BLg" secondAttribute="top" id="hOq-vE-Usc"/>
+                            <constraint firstAttribute="trailing" secondItem="33t-aZ-dOQ" secondAttribute="trailing" id="ldG-rF-wvG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Auto Keyboard" id="HEv-Vo-Ek7"/>
+                    <connections>
+                        <outlet property="buttonResign" destination="kyp-FP-h0W" id="xro-xv-XpC"/>
+                        <outlet property="tfAny" destination="9Df-fi-ZeY" id="bc2-N0-aKd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGa-s2-flJ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="895" y="123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OIC-NP-Ard">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ep-si-YxG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7et-6K-97e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BGR-We-ubx" kind="relationship" relationship="rootViewController" id="Stq-K7-ydq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLK-pr-U2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+</document>

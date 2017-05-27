@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:AutoKeyboard/AutoKeyboard.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Auto Keyborad Demo/Auto Keyborad Demo.xcodeproj">
+   </FileRef>
+</Workspace>
