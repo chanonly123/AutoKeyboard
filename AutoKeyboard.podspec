@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
   s.author             = { "Chandan Karmakar" => "chan.only.123@gmail.com" }
   # Or just: s.author    = "Chandan"
   # s.authors            = { "Chandan" => "chan.only.123@gmail.com" }
-  s.social_media_url   = "https://www.linkedin.com/in/chandan-karmakar-946989a9/"
+  #s.social_media_url   = ""
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "git@github.com:chanonly123/AutoKeyboard.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/chanonly123/AutoKeyboard.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
