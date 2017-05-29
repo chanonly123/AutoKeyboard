@@ -33,8 +33,13 @@ And register your specific ViewController, you should also unregister.
 ```
 
 ### CocoaPods
-Coming soon
-
+To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in your `Podfile` and run `pod install`.
+```bash
+platform :ios, '8.0'
+use_frameworks!
+pod 'AutoKeyboard', :git => 'https://github.com/chanonly123/AutoKeyboard.git', :tag => '1.0.1'
+```
+And `import AutoKeyboard`
 ### Carthage
 Coming soon
 
