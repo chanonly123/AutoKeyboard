@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
   s.author             = { "Chandan Karmakar" => "chan.only.123@gmail.com" }
   # Or just: s.author    = "Chandan"
   # s.authors            = { "Chandan" => "chan.only.123@gmail.com" }
-  # s.social_media_url   = "http://twitter.com/Chandan"
+  s.social_media_url   = "https://www.linkedin.com/in/chandan-karmakar-946989a9/"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -65,6 +65,7 @@ Pod::Spec.new do |s|
 
 #s.platform     = :ios
   s.platform     = :ios, "8.0"
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/chanonly123/AutoKeyboard", :tag => "#{s.version}" }
+  s.source       = { :git => "git@github.com:chanonly123/AutoKeyboard.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

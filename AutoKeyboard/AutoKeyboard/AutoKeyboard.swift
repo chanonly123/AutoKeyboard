@@ -41,8 +41,8 @@ extension UIViewController {
 	
 	func keyboardWillHide(notification: NSNotification) {
 		//print("keyboardWillHide")
-		guard let userInfo = notification.userInfo else { return }
-		let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+		//guard let userInfo = notification.userInfo else { return }
+		//let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 		self.view.frame = savedFrame!
 		animateWithKeyboardEventNotified(notification: notification)
 	}
