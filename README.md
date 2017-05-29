@@ -2,6 +2,9 @@
 
 Automatic view resizing when keyboard is opened.
 
+## []()
+![alt tag](https://github.com/chanonly123/AutoKeyboard/blob/master/demo.gif)
+
 ## Features
 - UIViewController extension, no need to extend classes.
 - Device rotation supported.
