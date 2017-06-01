@@ -1,12 +1,12 @@
 # AutoKeyboard for iOS written in Swift 3.0
 
-Automatic view resizing when keyboard is opened.
+Automatic Keyboard handling with ease.
 
 ## Features
 - UIViewController extension, no need to extend classes.
 - Device rotation supported.
 - Extremely easy integration.
-- Automatic resizing of UIViewController's view.
+- Automatic bottom constraints changes with keyboard
 - Resizing with animation.
 - No need to write extra code.
 - Just `registerAutoKeyboard ` and `unRegisterAutoKeyboard `
@@ -37,7 +37,7 @@ To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in
 ```bash
 platform :ios, '8.0'
 use_frameworks!
-pod 'AutoKeyboard', :git => 'https://github.com/chanonly123/AutoKeyboard.git', :tag => '1.0.1'
+pod 'AutoKeyboard', :git => 'https://github.com/chanonly123/AutoKeyboard.git', :tag => '1.0.2'
 ```
 And `import AutoKeyboard`
 ### Carthage

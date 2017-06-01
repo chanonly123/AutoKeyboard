@@ -9,8 +9,6 @@
 import UIKit
 import AutoKeyboard
 
-fileprivate var savedFrame : CGRect!
-
 class ViewController: UIViewController {
 	
 	@IBOutlet weak var tfAny: UITextField!
