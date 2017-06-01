@@ -1,6 +1,6 @@
 # AutoKeyboard for iOS written in Swift 3.0
 
-Automatic Keyboard handling with ease. It update constraints which are bound with `bottomLayoutGuide`.
+Automatic Keyboard handling with ease. It is fully automatic keyboard handling. Like in android no need to resize views when keyboard appears. It updates constraints which are bounded with `bottomLayoutGuide`. Feels like `bottomLayoutGuide` moves UP and DOWN with keyboard. Just need to `register` and `unResgister` thats it.
 
 ## []()
 ![alt tag](https://github.com/chanonly123/AutoKeyboard/blob/master/demo.gif)
