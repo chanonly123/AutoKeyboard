@@ -1,6 +1,6 @@
 # AutoKeyboard for iOS written in Swift 3.0
 
-Automatic Keyboard handling with ease.
+Automatic Keyboard handling with ease. It update constraints which are bound with `bottomLayoutGuide`.
 
 ## []()
 ![alt tag](https://github.com/chanonly123/AutoKeyboard/blob/master/demo.gif)
@@ -19,12 +19,10 @@ Automatic Keyboard handling with ease.
 - iOS8.0 or later
 - Xcode 8.0 - Swift 3.0 or later
 
-## Installing
-
-### Manual
-
-To install AutoKeyboard please add `AutoKeyboard.swift` to your Xcode Project.
-And register your specific ViewController, you should also unregister.
+## Usage
+![Alt text](https://github.com/chanonly123/AutoKeyboard/blob/master/help.png)<br />
+- Add constrainsts to `bottomLayoutGuide` and they will update when keyboard appears.
+- And Register your specific ViewController, you should also unregister.
 ```
     override func viewWillAppear(_ animated: Bool) {
         registerAutoKeyboard()
@@ -34,7 +32,7 @@ And register your specific ViewController, you should also unregister.
         unRegisterAutoKeyboard()
     }
 ```
-
+## Installing
 ### CocoaPods
 To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in your `Podfile` and run `pod install`.
 ```bash
