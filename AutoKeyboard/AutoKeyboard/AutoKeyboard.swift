@@ -8,57 +8,57 @@
 
 import UIKit
 
-fileprivate var savedConstant:[CGFloat] = []
-
-fileprivate let autoKeyboardNotifications = [
-    NSNotification.Name.UIKeyboardWillShow,
-    NSNotification.Name.UIKeyboardWillHide
-]
+fileprivate var savedConstant:[UIViewController:[NSLayoutConstraint:CGFloat]] = [:]
 
 extension UIViewController {
     
     public func registerAutoKeyboard() {
         print("Adding observers")
         
-        savedConstant.removeAll()
+        var consts:[NSLayoutConstraint:CGFloat] = [:]
         for each in getBottomConstrainsts() {
-            savedConstant.append(each.constant)
+            consts[each] = each.constant
         }
+        savedConstant[self] = consts
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     public func unRegisterAutoKeyboard() {
         self.view.endEditing(true)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        savedConstant.removeAll()
+        savedConstant.removeValue(forKey: self)
     }
     
     func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let const = getBottomConstrainsts()
-        if const.count > savedConstant.count {
-            return
-        }
-        for i in 0..<const.count {
-            const[i].constant = savedConstant[i] + keyboardFrameEnd.height
-        }
         
-        animateWithKeyboardEventNotified(notification: notification)
+        if let saved = savedConstant[self] {
+            let const = getBottomConstrainsts()
+            for each in const {
+                if let savedValue = saved[each] {
+                    each.constant = savedValue + keyboardFrameEnd.height
+                }
+            }
+            animateWithKeyboardEventNotified(notification: notification)
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        let const = getBottomConstrainsts()
-        if const.count > savedConstant.count {
-            return
+        
+        if let saved = savedConstant[self] {
+            let const = getBottomConstrainsts()
+            for each in const {
+                if let savedValue = saved[each] {
+                    each.constant = savedValue
+                }
+            }
+            animateWithKeyboardEventNotified(notification: notification)
         }
-        for i in 0..<const.count {
-            const[i].constant = savedConstant[i]
-        }
-        animateWithKeyboardEventNotified(notification: notification)
     }
     
     func getBottomConstrainsts() -> [NSLayoutConstraint] {
