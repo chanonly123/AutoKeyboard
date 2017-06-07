@@ -10,20 +10,67 @@ import UIKit
 
 fileprivate var savedConstant:[UIViewController:[NSLayoutConstraint:CGFloat]] = [:]
 
+private let swizzling: (UIViewController.Type) -> () = { viewController in
+    
+    let originalSelector1 = #selector(viewController.viewWillAppear(_:))
+    let swizzledSelector1 = #selector(viewController.newViewWillAppear(animated:))
+    
+    let originalMethod1 = class_getInstanceMethod(viewController, originalSelector1)
+    let swizzledMethod1 = class_getInstanceMethod(viewController, swizzledSelector1)
+    
+    let originalSelector2 = #selector(viewController.viewWillDisappear(_:))
+    let swizzledSelector2 = #selector(viewController.newViewWillDisappear(animated:))
+    
+    let originalMethod2 = class_getInstanceMethod(viewController, originalSelector2)
+    let swizzledMethod2 = class_getInstanceMethod(viewController, swizzledSelector2)
+    
+    method_exchangeImplementations(originalMethod1, swizzledMethod1)
+    method_exchangeImplementations(originalMethod2, swizzledMethod2)
+}
+
+extension UIApplication {
+    
+    private static let runOnce: Void = {
+        swizzling(UIViewController.self)
+    }()
+    
+    override open var next: UIResponder? {
+        UIApplication.runOnce
+        return super.next
+    }
+    
+}
+
 extension UIViewController {
     
+    func newViewWillAppear(animated: Bool) {
+        newViewWillAppear(animated: animated)
+        let object = NSStringFromClass(type(of: self)) as NSString
+        let module = object.components(separatedBy: ".")
+        if module.count > 1 {
+            //print("adding: \(module)")
+            registerAutoKeyboard()
+        }
+    }
+    
+    func newViewWillDisappear(animated: Bool) {
+        newViewWillDisappear(animated: animated)
+        let object = NSStringFromClass(type(of: self)) as NSString
+        let module = object.components(separatedBy: ".")
+        if module.count > 1 {
+            //print("removing: \(module)")
+            unRegisterAutoKeyboard()
+        }
+    }
+    
     public func registerAutoKeyboard() {
-        print("Adding observers")
-        
         var consts:[NSLayoutConstraint:CGFloat] = [:]
         for each in getBottomConstrainsts() {
             consts[each] = each.constant
         }
         savedConstant[self] = consts
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     public func unRegisterAutoKeyboard() {
@@ -36,7 +83,6 @@ extension UIViewController {
     func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
         if let saved = savedConstant[self] {
             let const = getBottomConstrainsts()
             for each in const {
@@ -49,7 +95,6 @@ extension UIViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        
         if let saved = savedConstant[self] {
             let const = getBottomConstrainsts()
             for each in const {
