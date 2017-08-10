@@ -6,6 +6,7 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 ![alt tag](https://github.com/chanonly123/AutoKeyboard/blob/master/demo.gif)
 
 ## Features
+- UITabBarController support added.
 - UIViewController extension, no need to extend classes.
 - Device rotation supported.
 - Multiple UIViewController support.

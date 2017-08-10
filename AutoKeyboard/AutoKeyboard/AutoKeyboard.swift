@@ -41,7 +41,8 @@ extension UIViewController {
             let const = getBottomConstrainsts()
             for each in const {
                 if let savedValue = saved[each] {
-                    each.constant = savedValue + keyboardFrameEnd.height
+                    let tabBarHeight : CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
+                    each.constant = savedValue + keyboardFrameEnd.height - tabBarHeight
                 }
             }
             animateWithKeyboardEventNotified(notification: notification)
