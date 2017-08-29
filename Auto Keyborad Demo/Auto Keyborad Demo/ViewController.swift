@@ -10,26 +10,28 @@ import UIKit
 import AutoKeyboard
 
 class ViewController: UIViewController {
-	
-	@IBOutlet weak var tfAny: UITextField!
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		registerAutoKeyboard()
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		unRegisterAutoKeyboard()
-	}
-	
-	@IBAction func bResingTap(_ sender: Any) {
-		tfAny.resignFirstResponder()
-	}
+    
+    @IBOutlet weak var tfAny: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerAutoKeyboard { (result) in
+            print("keyboard status \(result.status)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unRegisterAutoKeyboard()
+    }
+    
+    @IBAction func bResingTap(_ sender: Any) {
+        tfAny.resignFirstResponder()
+    }
 }
 
 
