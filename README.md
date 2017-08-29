@@ -14,7 +14,8 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 - Automatic bottom constraints changes with keyboard
 - Resizing with animation.
 - No need to write extra code.
-- Just `registerAutoKeyboard ` and `unRegisterAutoKeyboard `
+- Just `registerAutoKeyboard ` and `unRegisterAutoKeyboard `.
+- Callback support on keyboard willShow, didShow, willHide, didHide.
 
 ## Runtime Requirements
 
@@ -26,14 +27,31 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 - Add constrainsts to `bottomLayoutGuide` and they will update when keyboard appears.
 - And Register your specific ViewController, you should also unregister.
 ```
-    override func viewWillAppear(_ animated: Bool) {
-        registerAutoKeyboard()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        unRegisterAutoKeyboard()
-    }
+override func viewWillAppear(_ animated: Bool) {
+registerAutoKeyboard()
+}
+
+override func viewWillDisappear(_ animated: Bool) {
+unRegisterAutoKeyboard()
+}
 ```
+### Advanced Usage
+
+registerAutoKeyboard { (result) in
+print("keyboard status \(result.status)")
+
+switch result.status {
+case .willShow:
+// ...
+case .didShow:
+// ...
+case .willHide:
+// ...
+case .didHide:
+// ...
+}
+}
+
 ## Installing
 ### CocoaPods
 To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in your `Podfile` and run `pod install`.
@@ -49,7 +67,6 @@ Coming soon
 ## Contributing
 
 Contributions are always welcome!
-Contact `chan.only.123@gmail.com`
 
 ## License
 
