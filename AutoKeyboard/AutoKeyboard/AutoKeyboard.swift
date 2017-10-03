@@ -78,7 +78,7 @@ extension UIViewController {
         savedObservers.removeValue(forKey: self)
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         
         if let result = decodeNotification(notification: notification, status: .willShow) {
             if let saved = savedConstant[self] {
@@ -99,7 +99,7 @@ extension UIViewController {
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         
         if let result = decodeNotification(notification: notification, status: .willHide) {
             
@@ -119,7 +119,7 @@ extension UIViewController {
         }
     }
     
-    func keyboardDidShow(notification: NSNotification) {
+    @objc func keyboardDidShow(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .didShow) {
             if let observer = savedObservers[self] {
                 observer(result)
@@ -127,7 +127,7 @@ extension UIViewController {
         }
     }
     
-    func keyboardDidHide(notification: NSNotification) {
+    @objc func keyboardDidHide(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .didHide) {
             if let observer = savedObservers[self] {
                 observer(result)
