@@ -43,7 +43,7 @@ public class KeyboardResult {
     
 }
 public enum KeyboardStatus: String {
-    case willShow, willHide, didShow, didHide
+    case willShow, willHide, didShow, didHide, willChangeFrame, didChangeFrame
 }
 
 extension UIViewController {
@@ -65,6 +65,8 @@ extension UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         
     }
     
@@ -74,6 +76,8 @@ extension UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         savedConstant.removeValue(forKey: self)
         savedObservers.removeValue(forKey: self)
     }
@@ -135,6 +139,22 @@ extension UIViewController {
         }
     }
     
+    @objc func keyboardWillChangeFrame(notification: NSNotification) {
+        if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
+            if let observer = savedObservers[self] {
+                observer(result)
+            }
+        }
+    }
+    
+    @objc func keyboardDidChangeFrame(notification: NSNotification) {
+        if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
+            if let observer = savedObservers[self] {
+                observer(result)
+            }
+        }
+    }
+    
     func getBottomConstrainsts() -> [NSLayoutConstraint] {
         var consts:[NSLayoutConstraint] = []
         for each in self.view.constraints {
@@ -152,7 +172,7 @@ extension UIViewController {
         let keyboardFrameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let curve = UIViewAnimationCurve(rawValue: (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
         let options = UIViewAnimationOptions(rawValue: UInt(curve.rawValue << 16))
-        let duration = TimeInterval(userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber)
+        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
         
         let result = KeyboardResult(notification: notification, userInfo: userInfo, status: status, curve: curve, options: options, duration: duration, keyboardFrameBegin: keyboardFrameBegin, keyboardFrameEnd: keyboardFrameEnd)
         

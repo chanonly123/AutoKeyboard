@@ -5,6 +5,9 @@
       location = "group:AutoKeyboard/AutoKeyboard.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
       location = "group:Auto Keyborad Demo/Auto Keyborad Demo.xcodeproj">
    </FileRef>
 </Workspace>

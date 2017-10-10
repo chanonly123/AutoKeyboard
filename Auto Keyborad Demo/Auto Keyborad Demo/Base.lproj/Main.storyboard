@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,7 +80,7 @@
         <!--Scroll View Example-->
         <scene sceneID="tNG-Cv-MNW">
             <objects>
-                <viewController id="BGR-We-ubx" customClass="ViewController" customModule="Auto_Keyborad_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BGR-We-ubx" customClass="ScrollViewController" customModule="Auto_Keyborad_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sgN-SM-ET3"/>
                         <viewControllerLayoutGuide type="bottom" id="0Wk-hE-Hel"/>
@@ -93,23 +93,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-lg-pHz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="869.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="934.5"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-fi-ZeY">
-                                                <rect key="frame" x="35" y="804.5" width="305" height="30"/>
+                                                <rect key="frame" x="35" y="869.5" width="305" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyp-FP-h0W">
-                                                <rect key="frame" x="35" y="739.5" width="305" height="30"/>
+                                                <rect key="frame" x="35" y="804.5" width="305" height="30"/>
                                                 <state key="normal" title="Resign"/>
                                                 <connections>
                                                     <action selector="bResingTap:" destination="BGR-We-ubx" eventType="touchUpInside" id="fN9-2a-v4G"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-Te-LCw">
+                                                <rect key="frame" x="35" y="30" width="305" height="40"/>
+                                                <state key="normal" title="Resign"/>
+                                                <connections>
+                                                    <action selector="bResingTap:" destination="BGR-We-ubx" eventType="touchUpInside" id="slz-xD-1eB"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23U-49-MBH">
-                                                <rect key="frame" x="35" y="35" width="305" height="669.5"/>
+                                                <rect key="frame" x="35" y="100" width="305" height="669.5"/>
                                                 <string key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -121,13 +128,17 @@
                                             <constraint firstAttribute="bottom" secondItem="9Df-fi-ZeY" secondAttribute="bottom" constant="35" id="4So-xi-8l1"/>
                                             <constraint firstItem="23U-49-MBH" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="5YQ-ES-Siy"/>
                                             <constraint firstAttribute="trailing" secondItem="9Df-fi-ZeY" secondAttribute="trailing" constant="35" id="8lO-pe-2Kc"/>
+                                            <constraint firstItem="23U-49-MBH" firstAttribute="top" secondItem="pc7-Te-LCw" secondAttribute="bottom" constant="30" id="EhL-y1-gCg"/>
                                             <constraint firstItem="kyp-FP-h0W" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="IEc-zn-L7V"/>
                                             <constraint firstAttribute="trailing" secondItem="kyp-FP-h0W" secondAttribute="trailing" constant="35" id="Lg4-SB-pch"/>
                                             <constraint firstItem="9Df-fi-ZeY" firstAttribute="top" secondItem="kyp-FP-h0W" secondAttribute="bottom" constant="35" id="QyQ-9Y-5Pb"/>
-                                            <constraint firstItem="23U-49-MBH" firstAttribute="top" secondItem="fMq-lg-pHz" secondAttribute="top" constant="35" id="WsA-ID-1jF"/>
+                                            <constraint firstItem="23U-49-MBH" firstAttribute="top" secondItem="fMq-lg-pHz" secondAttribute="top" constant="100" id="WsA-ID-1jF"/>
                                             <constraint firstItem="9Df-fi-ZeY" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="Zcv-W6-62i"/>
+                                            <constraint firstItem="pc7-Te-LCw" firstAttribute="leading" secondItem="fMq-lg-pHz" secondAttribute="leading" constant="35" id="gRp-z4-3P3"/>
                                             <constraint firstAttribute="trailing" secondItem="23U-49-MBH" secondAttribute="trailing" constant="35" id="iyv-bT-6cP"/>
+                                            <constraint firstItem="pc7-Te-LCw" firstAttribute="top" secondItem="fMq-lg-pHz" secondAttribute="top" constant="30" id="lhf-3c-9fP"/>
                                             <constraint firstItem="kyp-FP-h0W" firstAttribute="top" secondItem="23U-49-MBH" secondAttribute="bottom" constant="35" id="phA-Pw-bee"/>
+                                            <constraint firstAttribute="trailing" secondItem="pc7-Te-LCw" secondAttribute="trailing" constant="35" id="raV-RX-byh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -142,7 +153,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0Wk-hE-Hel" firstAttribute="top" secondItem="33t-aZ-dOQ" secondAttribute="bottom" id="17e-Rj-oFB"/>
+                            <constraint firstItem="0Wk-hE-Hel" firstAttribute="top" secondItem="33t-aZ-dOQ" secondAttribute="bottom" id="4WH-Wf-uqI"/>
                             <constraint firstItem="33t-aZ-dOQ" firstAttribute="leading" secondItem="aqY-ee-BLg" secondAttribute="leading" id="Npe-b0-gf4"/>
                             <constraint firstItem="33t-aZ-dOQ" firstAttribute="top" secondItem="aqY-ee-BLg" secondAttribute="top" id="hOq-vE-Usc"/>
                             <constraint firstAttribute="trailing" secondItem="33t-aZ-dOQ" secondAttribute="trailing" id="ldG-rF-wvG"/>
@@ -152,7 +163,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
-                        <outlet property="tfAny" destination="9Df-fi-ZeY" id="bc2-N0-aKd"/>
+                        <outlet property="scrollView" destination="33t-aZ-dOQ" id="ZJb-ZR-wZv"/>
+                        <outlet property="tfAny" destination="9Df-fi-ZeY" id="IX1-Sg-L1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGa-s2-flJ" sceneMemberID="firstResponder"/>
@@ -165,7 +177,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ep-si-YxG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7et-6K-97e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

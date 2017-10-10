@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1730E1501F8CA91500E2DF95 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */; };
 		F3238C611ED9714800C3EDFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C601ED9714800C3EDFD /* AppDelegate.swift */; };
 		F3238C631ED9714800C3EDFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C621ED9714800C3EDFD /* ViewController.swift */; };
 		F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C641ED9714800C3EDFD /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Keyborad Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3238C601ED9714800C3EDFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3238C621ED9714800C3EDFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				F3238C601ED9714800C3EDFD /* AppDelegate.swift */,
 				F3238C621ED9714800C3EDFD /* ViewController.swift */,
+				1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */,
 				F3238C641ED9714800C3EDFD /* Main.storyboard */,
 				F3238C671ED9714800C3EDFD /* Assets.xcassets */,
 				F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3238C631ED9714800C3EDFD /* ViewController.swift in Sources */,
+				1730E1501F8CA91500E2DF95 /* ScrollViewController.swift in Sources */,
 				F3238C611ED9714800C3EDFD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
