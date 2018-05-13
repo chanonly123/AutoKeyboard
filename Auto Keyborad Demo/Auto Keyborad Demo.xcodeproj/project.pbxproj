@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1730E1501F8CA91500E2DF95 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */; };
+		1748A56F20A8857500FFEBE7 /* Main_safe_area.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1748A56E20A8857500FFEBE7 /* Main_safe_area.storyboard */; };
 		F3238C611ED9714800C3EDFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C601ED9714800C3EDFD /* AppDelegate.swift */; };
 		F3238C631ED9714800C3EDFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3238C621ED9714800C3EDFD /* ViewController.swift */; };
-		F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C641ED9714800C3EDFD /* Main.storyboard */; };
+		F3238C661ED9714800C3EDFD /* Main_layout_guid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C641ED9714800C3EDFD /* Main_layout_guid.storyboard */; };
 		F3238C681ED9714800C3EDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3238C671ED9714800C3EDFD /* Assets.xcassets */; };
 		F3238C6B1ED9714800C3EDFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */; };
 		F3238CA81ED9A04400C3EDFD /* AutoKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3238CA71ED9A04400C3EDFD /* AutoKeyboard.framework */; };
@@ -33,10 +34,11 @@
 
 /* Begin PBXFileReference section */
 		1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		1748A56E20A8857500FFEBE7 /* Main_safe_area.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_safe_area.storyboard; sourceTree = "<group>"; };
 		F3238C5D1ED9714800C3EDFD /* Auto Keyborad Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto Keyborad Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3238C601ED9714800C3EDFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3238C621ED9714800C3EDFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F3238C651ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F3238C651ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_layout_guid.storyboard; sourceTree = "<group>"; };
 		F3238C671ED9714800C3EDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3238C6A1ED9714800C3EDFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3238C6C1ED9714800C3EDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,7 +82,8 @@
 				F3238C601ED9714800C3EDFD /* AppDelegate.swift */,
 				F3238C621ED9714800C3EDFD /* ViewController.swift */,
 				1730E14F1F8CA91500E2DF95 /* ScrollViewController.swift */,
-				F3238C641ED9714800C3EDFD /* Main.storyboard */,
+				F3238C641ED9714800C3EDFD /* Main_layout_guid.storyboard */,
+				1748A56E20A8857500FFEBE7 /* Main_safe_area.storyboard */,
 				F3238C671ED9714800C3EDFD /* Assets.xcassets */,
 				F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */,
 				F3238C6C1ED9714800C3EDFD /* Info.plist */,
@@ -159,7 +162,8 @@
 			files = (
 				F3238C6B1ED9714800C3EDFD /* LaunchScreen.storyboard in Resources */,
 				F3238C681ED9714800C3EDFD /* Assets.xcassets in Resources */,
-				F3238C661ED9714800C3EDFD /* Main.storyboard in Resources */,
+				F3238C661ED9714800C3EDFD /* Main_layout_guid.storyboard in Resources */,
+				1748A56F20A8857500FFEBE7 /* Main_safe_area.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,12 +183,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F3238C641ED9714800C3EDFD /* Main.storyboard */ = {
+		F3238C641ED9714800C3EDFD /* Main_layout_guid.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F3238C651ED9714800C3EDFD /* Base */,
 			);
-			name = Main.storyboard;
+			name = Main_layout_guid.storyboard;
 			sourceTree = "<group>";
 		};
 		F3238C691ED9714800C3EDFD /* LaunchScreen.storyboard */ = {
@@ -299,7 +303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5WW76S3NRC;
 				INFOPLIST_FILE = "Auto Keyborad Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chanonly123.Auto-Keyborad-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -313,7 +317,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5WW76S3NRC;
 				INFOPLIST_FILE = "Auto Keyborad Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chanonly123.Auto-Keyborad-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

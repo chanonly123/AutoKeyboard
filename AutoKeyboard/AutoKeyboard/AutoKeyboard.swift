@@ -8,13 +8,12 @@
 
 import UIKit
 
-fileprivate var savedConstant: [UIViewController:[NSLayoutConstraint:CGFloat]] = [:]
-fileprivate var savedObservers: [UIViewController:((_ show:KeyboardResult) -> Void)] = [:]
+fileprivate var savedConstant: [UIViewController: [NSLayoutConstraint: CGFloat]] = [:]
+fileprivate var savedObservers: [UIViewController: ((_ show: KeyboardResult) -> Void)] = [:]
 
 public class KeyboardResult {
-    
     public let notification: NSNotification
-    public let userInfo: [AnyHashable : Any]
+    public let userInfo: [AnyHashable: Any]
     public let status: KeyboardStatus
     public let curve: UIViewAnimationCurve
     public let options: UIViewAnimationOptions
@@ -23,14 +22,13 @@ public class KeyboardResult {
     public let keyboardFrameEnd: CGRect
     
     init(notification: NSNotification,
-         userInfo: [AnyHashable : Any],
+         userInfo: [AnyHashable: Any],
          status: KeyboardStatus,
          curve: UIViewAnimationCurve,
          options: UIViewAnimationOptions,
          duration: TimeInterval,
          keyboardFrameBegin: CGRect,
          keyboardFrameEnd: CGRect) {
-        
         self.notification = notification
         self.userInfo = userInfo
         self.status = status
@@ -40,18 +38,17 @@ public class KeyboardResult {
         self.keyboardFrameBegin = keyboardFrameBegin
         self.keyboardFrameEnd = keyboardFrameEnd
     }
-    
 }
+
 public enum KeyboardStatus: String {
     case willShow, willHide, didShow, didHide, willChangeFrame, didChangeFrame
 }
 
 extension UIViewController {
-    
-    public func registerAutoKeyboard(observer:((_ show:KeyboardResult) -> Void)? = nil) {
+    public func registerAutoKeyboard(observer: ((_ show: KeyboardResult) -> Void)? = nil) {
         print("Adding observers")
         
-        var consts:[NSLayoutConstraint:CGFloat] = [:]
+        var consts: [NSLayoutConstraint: CGFloat] = [:]
         for each in getBottomConstrainsts() {
             consts[each] = each.constant
         }
@@ -67,11 +64,10 @@ extension UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
-        
     }
     
     public func unRegisterAutoKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
@@ -83,13 +79,12 @@ extension UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        
         if let result = decodeNotification(notification: notification, status: .willShow) {
             if let saved = savedConstant[self] {
                 let const = getBottomConstrainsts()
                 for each in const {
                     if let savedValue = saved[each] {
-                        let tabBarHeight : CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
+                        let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
                         each.constant = savedValue + result.keyboardFrameEnd.height - tabBarHeight
                     }
                 }
@@ -100,13 +95,10 @@ extension UIViewController {
                 observer(result)
             }
         }
-        
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        
         if let result = decodeNotification(notification: notification, status: .willHide) {
-            
             if let saved = savedConstant[self] {
                 let const = getBottomConstrainsts()
                 for each in const {
@@ -156,17 +148,53 @@ extension UIViewController {
     }
     
     func getBottomConstrainsts() -> [NSLayoutConstraint] {
-        var consts:[NSLayoutConstraint] = []
-        for each in self.view.constraints {
-            if (each.firstItem === self.bottomLayoutGuide && each.firstAttribute == .top && each.secondAttribute == .bottom) || (each.secondItem === self.bottomLayoutGuide && each.secondAttribute == .top && each.firstAttribute == .bottom) {
-                consts.append(each)
+        var consts: [NSLayoutConstraint] = []
+        if #available(iOS 11.0, *) {
+            let safeArea = self.view.safeAreaLayoutGuide
+            for each in self.view.constraints {
+                if (each.firstItem === safeArea &&
+                    each.firstAttribute == .bottom &&
+                    each.secondItem !== self.view &&
+                    each.secondAttribute == .bottom) ||
+                    (each.secondItem === safeArea &&
+                        each.secondAttribute == .bottom &&
+                        each.firstItem !== self.view &&
+                        each.firstAttribute == .bottom) {
+                    consts.append(each)
+                }
+            }
+            let guide = self.bottomLayoutGuide
+            for each in self.view.constraints {
+                if (each.firstItem === guide &&
+                    each.firstAttribute == .top &&
+                    each.secondItem !== self.view &&
+                    each.secondAttribute == .bottom) ||
+                    (each.secondItem === guide &&
+                        each.secondAttribute == .top &&
+                        each.firstItem !== self.view &&
+                        each.firstAttribute == .bottom) {
+                    consts.append(each)
+                }
+            }
+        } else {
+            let guide = bottomLayoutGuide
+            for each in view.constraints {
+                if (each.firstItem === guide &&
+                    each.firstAttribute == .top &&
+                    each.secondItem !== view &&
+                    each.secondAttribute == .bottom) ||
+                    (each.secondItem === guide &&
+                        each.secondAttribute == .top &&
+                        each.firstItem !== view &&
+                        each.firstAttribute == .bottom) {
+                    consts.append(each)
+                }
             }
         }
         return consts
     }
     
     private func decodeNotification(notification: NSNotification, status: KeyboardStatus) -> KeyboardResult? {
-        
         guard let userInfo = notification.userInfo else { return nil }
         let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardFrameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -180,12 +208,8 @@ extension UIViewController {
     }
     
     private func animateWithKeyboardEventNotified(result: KeyboardResult) {
-        
-        UIView.animate(withDuration: result.duration, delay: 0.0, options: [result.options], animations:
-            { [weak self] () -> Void in
-                self!.view.layoutIfNeeded()
-            } , completion: nil)
+        UIView.animate(withDuration: result.duration, delay: 0.0, options: [result.options], animations: { [weak self] () -> Void in
+            self!.view.layoutIfNeeded()
+        }, completion: nil)
     }
-    
 }
-
