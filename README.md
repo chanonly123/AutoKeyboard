@@ -1,11 +1,12 @@
 # AutoKeyboard for iOS written in Swift
 
-Automatic Keyboard handling with ease. It is fully automatic keyboard handling. Like in android no need to resize views when keyboard appears. It updates constraints which are bounded with `bottomLayoutGuide`. Feels like `bottomLayoutGuide` moves UP and DOWN with keyboard. Just need to `register` and `unResgister` thats it.
+Automatic Keyboard handling with ease. It is fully automatic keyboard handling. Like in android no need to resize views when keyboard appears. It updates constraints which are bounded with `bottomLayoutGuide` or `safeAreaLayoutGuide`. Like `bottomLayoutGuide` or `safeAreaLayoutGuide` moves UP and DOWN with keyboard. Just need to `register` and `unResgister` thats it.
 
 ## []()
 ![alt tag](https://github.com/chanonly123/AutoKeyboard/blob/master/demo.gif)
 
 ## Features
+- safeAreaLayoutGuide suppord added.
 - UITabBarController support added.
 - UIViewController extension, no need to extend classes.
 - Device rotation supported.
@@ -26,7 +27,7 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 ## Usage
 ### Basic Usage
 ![Alt text](https://github.com/chanonly123/AutoKeyboard/blob/master/help.png)<br />
-- Add constrainsts to `bottomLayoutGuide` and they will update when keyboard appears.
+- Add constrainsts to `bottomLayoutGuide` or `safeAreaLayoutGuide` and they will update when keyboard appears.
 - And Register your specific ViewController, you should also unregister.
 ```Swift
 override func viewWillAppear(_ animated: Bool) {
