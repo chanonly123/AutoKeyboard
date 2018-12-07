@@ -15,8 +15,8 @@ public class KeyboardResult {
     public let notification: NSNotification
     public let userInfo: [AnyHashable: Any]
     public let status: KeyboardStatus
-    public let curve: UIViewAnimationCurve
-    public let options: UIViewAnimationOptions
+    public let curve: UIView.AnimationCurve
+    public let options: UIView.AnimationOptions
     public let duration: TimeInterval
     public let keyboardFrameBegin: CGRect
     public let keyboardFrameEnd: CGRect
@@ -24,8 +24,8 @@ public class KeyboardResult {
     init(notification: NSNotification,
          userInfo: [AnyHashable: Any],
          status: KeyboardStatus,
-         curve: UIViewAnimationCurve,
-         options: UIViewAnimationOptions,
+         curve: UIView.AnimationCurve,
+         options: UIView.AnimationOptions,
          duration: TimeInterval,
          keyboardFrameBegin: CGRect,
          keyboardFrameEnd: CGRect) {
@@ -46,7 +46,7 @@ public enum KeyboardStatus: String {
 
 extension UIViewController {
     public func registerAutoKeyboard(observer: ((_ show: KeyboardResult) -> Void)? = nil) {
-        print("Adding observers")
+        //print("Adding observers")
         
         var consts: [NSLayoutConstraint: CGFloat] = [:]
         for each in getBottomConstrainsts() {
@@ -58,22 +58,22 @@ extension UIViewController {
             savedObservers[self] = observer
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
     
     public func unRegisterAutoKeyboard() {
         view.endEditing(true)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         savedConstant.removeValue(forKey: self)
         savedObservers.removeValue(forKey: self)
     }
@@ -196,11 +196,11 @@ extension UIViewController {
     
     private func decodeNotification(notification: NSNotification, status: KeyboardStatus) -> KeyboardResult? {
         guard let userInfo = notification.userInfo else { return nil }
-        let keyboardFrameEnd = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let keyboardFrameBegin = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        let curve = UIViewAnimationCurve(rawValue: (userInfo[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
-        let options = UIViewAnimationOptions(rawValue: UInt(curve.rawValue << 16))
-        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+        let keyboardFrameEnd = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardFrameBegin = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let curve = UIView.AnimationCurve(rawValue: (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as! NSNumber).intValue)!
+        let options = UIView.AnimationOptions(rawValue: UInt(curve.rawValue << 16))
+        let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! TimeInterval
         
         let result = KeyboardResult(notification: notification, userInfo: userInfo, status: status, curve: curve, options: options, duration: duration, keyboardFrameBegin: keyboardFrameBegin, keyboardFrameEnd: keyboardFrameEnd)
         
@@ -210,6 +210,6 @@ extension UIViewController {
     private func animateWithKeyboardEventNotified(result: KeyboardResult) {
         UIView.animate(withDuration: result.duration, delay: 0.0, options: [result.options], animations: { [weak self] () -> Void in
             self!.view.layoutIfNeeded()
-        }, completion: nil)
+            }, completion: nil)
     }
 }
