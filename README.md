@@ -18,6 +18,7 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 - Just `registerAutoKeyboard ` and `unRegisterAutoKeyboard `.
 - Callback support on keyboard willShow, didShow, willHide, didHide, willChangeFrame, didChangeFrame.
 - Example for keeping scroll position of scrollView
+- Ability to Register or Disable other constraints 
 
 ## Runtime Requirements
 
@@ -40,7 +41,7 @@ unRegisterAutoKeyboard()
 ```
 ### Advanced Usage
 ```Swift
-registerAutoKeyboard { (result) in
+registerAutoKeyboard(enable: [lblBottom], disable: [btnShowScrollBottom]) { (result) in
 print("keyboard status \(result.status)")
 
 switch result.status {

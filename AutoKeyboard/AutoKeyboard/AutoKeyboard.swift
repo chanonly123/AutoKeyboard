@@ -45,8 +45,12 @@ public enum KeyboardStatus: String {
 }
 
 extension UIViewController {
+    /**
+     Registers keyboard observers with constraints linked to SafeArea.Bottom or LayoutGuide.Bottom.
+     - Parameter enable: to register constraints other than defaults
+     - Parameter disable: to disable constraints
+     */
     public func registerAutoKeyboard(enable: [NSLayoutConstraint] = [], disable: [NSLayoutConstraint] = [], observer: ((_ show: KeyboardResult) -> Void)? = nil) {
-        
         print("Registering AutoKeyboard to: \(NSStringFromClass(type(of: self)))")
         
         var consts: [NSLayoutConstraint: CGFloat] = [:]
@@ -72,6 +76,9 @@ extension UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
     
+    /**
+     Unregisters keyboard observers.
+     */
     public func unRegisterAutoKeyboard() {
         print("Unregistering AutoKeyboard from: \(NSStringFromClass(type(of: self)))")
         view.endEditing(true)
@@ -148,7 +155,7 @@ extension UIViewController {
         }
     }
     
-    func getBottomConstrainsts() -> [NSLayoutConstraint] {
+    private func getBottomConstrainsts() -> [NSLayoutConstraint] {
         var consts: [NSLayoutConstraint] = []
         if #available(iOS 11.0, *) {
             let safeArea = self.view.safeAreaLayoutGuide
