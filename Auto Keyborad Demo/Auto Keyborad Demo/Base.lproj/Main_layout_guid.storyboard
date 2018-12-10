@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -50,6 +48,12 @@
                                     <segue destination="BGR-We-ubx" kind="show" id="1T6-jy-zLe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Without safe area or layout guide" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WY-Fq-9Zr">
+                                <rect key="frame" x="36" y="500" width="303" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -60,16 +64,21 @@
                             <constraint firstItem="vOd-Ig-xDy" firstAttribute="width" secondItem="1NP-Se-tuI" secondAttribute="width" multiplier="1:2" id="TEd-RX-DJx"/>
                             <constraint firstItem="YlA-tt-T3a" firstAttribute="top" secondItem="ZU4-Dn-Oq8" secondAttribute="bottom" constant="8" id="Wen-in-OcY"/>
                             <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="1NP-Se-tuI" secondAttribute="bottom" constant="16" id="etB-DA-hdI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7WY-Fq-9Zr" secondAttribute="trailing" constant="20" id="hOd-Lc-4Cm"/>
                             <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="GjC-Kb-O3B" secondAttribute="bottom" id="kSB-xo-GOG"/>
+                            <constraint firstItem="7WY-Fq-9Zr" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leadingMargin" constant="20" id="lW9-xB-ljs"/>
                             <constraint firstItem="GjC-Kb-O3B" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leading" id="lr8-fP-rah"/>
                             <constraint firstItem="vOd-Ig-xDy" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leading" constant="16" id="pFp-G2-qBa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YlA-tt-T3a" secondAttribute="trailing" constant="4" id="qa2-4O-V2X"/>
                             <constraint firstAttribute="trailing" secondItem="GjC-Kb-O3B" secondAttribute="trailing" id="qdT-G4-XzE"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="7WY-Fq-9Zr" secondAttribute="bottom" constant="100" id="qs0-M8-BHP"/>
                             <constraint firstItem="YlA-tt-T3a" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leadingMargin" constant="4" id="w7W-oR-Pxt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Auto Keyboard Demo" id="M1y-Rb-pcO"/>
                     <connections>
+                        <outlet property="btnShowScrollBottom" destination="etB-DA-hdI" id="JUX-WR-owL"/>
+                        <outlet property="lblBottom" destination="qs0-M8-BHP" id="X5y-OW-DzB"/>
                         <outlet property="tfAny" destination="YlA-tt-T3a" id="5Wc-BA-hKJ"/>
                     </connections>
                 </viewController>
