@@ -62,9 +62,8 @@ To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in
 ```bash
 platform :ios, '8.0'
 use_frameworks!
-pod 'AutoKeyboard'                 // for swift 4.2 or later
-pod 'AutoKeyboard', '~> 1.0.6'     // for swift 4
-pod 'AutoKeyboard', '~> 1.0.3'     // for swift 3
+pod 'AutoKeyboard'                 // for swift 5.0
+pod 'AutoKeyboard', '~> 1.4.3'     // for swift 4.2
 ```
 And `import AutoKeyboard`
 ### Carthage

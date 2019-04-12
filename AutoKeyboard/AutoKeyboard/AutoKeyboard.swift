@@ -8,8 +8,8 @@
 
 import UIKit
 
-fileprivate var savedConstant: [UIViewController: [NSLayoutConstraint: CGFloat]] = [:]
-fileprivate var savedObservers: [UIViewController: ((_ show: KeyboardResult) -> Void)] = [:]
+private var savedConstant = NSMapTable<UIViewController, AnyObject>(keyOptions: .weakMemory, valueOptions: .strongMemory)
+private var savedObservers = NSMapTable<UIViewController, AnyObject>(keyOptions: .weakMemory, valueOptions: .strongMemory)
 
 public class KeyboardResult {
     public let notification: NSNotification
@@ -65,8 +65,8 @@ extension UIViewController {
             consts[each] = nil
         }
         
-        savedConstant[self] = consts
-        savedObservers[self] = observer
+        savedConstant.setObject(consts as AnyObject, forKey: self)
+        savedObservers.setObject(observer as AnyObject, forKey: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -88,13 +88,13 @@ extension UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
-        savedConstant.removeValue(forKey: self)
-        savedObservers.removeValue(forKey: self)
+        savedConstant.removeObject(forKey: self)
+        savedObservers.removeObject(forKey: self)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willShow) {
-            if let saved = savedConstant[self] {
+            if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
                 for each in saved {
                     let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
                     each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight
@@ -102,7 +102,7 @@ extension UIViewController {
                 animateWithKeyboardEventNotified(result: result)
             }
             
-            if let observer = savedObservers[self] {
+            if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
                 observer(result)
             }
         }
@@ -110,21 +110,21 @@ extension UIViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willHide) {
-            if let saved = savedConstant[self] {
+            if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
                 for each in saved {
                     each.key.constant = each.value
                 }
                 animateWithKeyboardEventNotified(result: result)
             }
             
-            if let observer = savedObservers[self] {
+            if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
                 observer(result)
             }
         }
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
-        if let observer = savedObservers[self] {
+        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didShow) {
                 observer(result)
             }
@@ -132,7 +132,7 @@ extension UIViewController {
     }
     
     @objc func keyboardDidHide(notification: NSNotification) {
-        if let observer = savedObservers[self] {
+        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didHide) {
                 observer(result)
             }
@@ -140,7 +140,7 @@ extension UIViewController {
     }
     
     @objc func keyboardWillChangeFrame(notification: NSNotification) {
-        if let observer = savedObservers[self] {
+        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
                 observer(result)
             }
@@ -148,7 +148,7 @@ extension UIViewController {
     }
     
     @objc func keyboardDidChangeFrame(notification: NSNotification) {
-        if let observer = savedObservers[self] {
+        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
                 observer(result)
             }
