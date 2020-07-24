@@ -68,12 +68,12 @@ extension UIViewController {
         savedConstant.setObject(consts as AnyObject, forKey: self)
         savedObservers.setObject(observer as AnyObject, forKey: self)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidChangeFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardDidHide(notification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardDidChangeFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
     
     /**
@@ -92,7 +92,7 @@ extension UIViewController {
         savedObservers.removeObject(forKey: self)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc func actionKeyboardWillShow(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willShow) {
             if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
                 for each in saved {
@@ -108,7 +108,7 @@ extension UIViewController {
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func actionKeyboardWillHide(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willHide) {
             if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
                 for each in saved {
@@ -123,7 +123,7 @@ extension UIViewController {
         }
     }
     
-    @objc func keyboardDidShow(notification: NSNotification) {
+    @objc func actionKeyboardDidShow(notification: NSNotification) {
         if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didShow) {
                 observer(result)
@@ -131,7 +131,7 @@ extension UIViewController {
         }
     }
     
-    @objc func keyboardDidHide(notification: NSNotification) {
+    @objc func actionKeyboardDidHide(notification: NSNotification) {
         if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didHide) {
                 observer(result)
@@ -139,7 +139,7 @@ extension UIViewController {
         }
     }
     
-    @objc func keyboardWillChangeFrame(notification: NSNotification) {
+    @objc func actionKeyboardWillChangeFrame(notification: NSNotification) {
         if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
                 observer(result)
@@ -147,7 +147,7 @@ extension UIViewController {
         }
     }
     
-    @objc func keyboardDidChangeFrame(notification: NSNotification) {
+    @objc func actionKeyboardDidChangeFrame(notification: NSNotification) {
         if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
             if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
                 observer(result)
