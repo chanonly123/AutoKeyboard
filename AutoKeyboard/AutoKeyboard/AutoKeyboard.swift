@@ -97,7 +97,13 @@ extension UIViewController {
             if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
                 for each in saved {
                     let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
-                    each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight
+                    var iPhoneXExtra: CGFloat = 0
+                    if #available(iOS 11.0, *) {
+                        if view.safeAreaInsets.bottom > 0 {
+                            iPhoneXExtra = view.safeAreaInsets.bottom
+                        }
+                    }
+                    each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight - iPhoneXExtra
                 }
                 animateWithKeyboardEventNotified(result: result)
             }
