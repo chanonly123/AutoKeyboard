@@ -56,6 +56,12 @@ case .didHide:
 }
 }
 ```
+#### If you have custom tabbar, return the height 
+```
+extension ViewController: AutoKeyboardOptions {
+    var customTabbarExtraHeight: CGFloat { 50 }
+}
+```
 ## Installing
 ### CocoaPods
 To integrate AutoKeyboard into your Xcode project using CocoaPods, specify it in your `Podfile` and run `pod install`.

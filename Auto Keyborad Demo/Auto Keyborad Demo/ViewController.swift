@@ -6,11 +6,10 @@
 //  Copyright © 2017 chanonly123. All rights reserved.
 //
 
-import UIKit
 import AutoKeyboard
+import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var tfAny: UITextField!
     @IBOutlet weak var lblBottom: NSLayoutConstraint!
     @IBOutlet weak var btnShowScrollBottom: NSLayoutConstraint!
@@ -21,7 +20,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        registerAutoKeyboard(enable: [lblBottom], disable: [btnShowScrollBottom]) { (result) in
+        registerAutoKeyboard(enable: [lblBottom], disable: [btnShowScrollBottom]) { result in
             print("keyboard status \(result.status)")
         }
     }
@@ -36,5 +35,6 @@ class ViewController: UIViewController {
     }
 }
 
-
-
+extension ViewController: AutoKeyboardOptions {
+    var customTabbarExtraHeight: CGFloat { 0 }
+}

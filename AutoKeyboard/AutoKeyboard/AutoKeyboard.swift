@@ -8,8 +8,12 @@
 
 import UIKit
 
-private var savedConstant = NSMapTable<UIViewController, AnyObject>(keyOptions: .weakMemory, valueOptions: .strongMemory)
-private var savedObservers = NSMapTable<UIViewController, AnyObject>(keyOptions: .weakMemory, valueOptions: .strongMemory)
+class GroupItem {
+    var handler: ((_ show: KeyboardResult) -> Void)?
+    var constraints = [NSLayoutConstraint: CGFloat]()
+}
+
+private var savedObservers = NSMapTable<UIViewController, GroupItem>(keyOptions: .weakMemory, valueOptions: .strongMemory)
 
 public class KeyboardResult {
     public let notification: NSNotification
@@ -28,7 +32,8 @@ public class KeyboardResult {
          options: UIView.AnimationOptions,
          duration: TimeInterval,
          keyboardFrameBegin: CGRect,
-         keyboardFrameEnd: CGRect) {
+         keyboardFrameEnd: CGRect)
+    {
         self.notification = notification
         self.userInfo = userInfo
         self.status = status
@@ -42,6 +47,10 @@ public class KeyboardResult {
 
 public enum KeyboardStatus: String {
     case willShow, willHide, didShow, didHide, willChangeFrame, didChangeFrame
+}
+
+public protocol AutoKeyboardOptions {
+    var customTabbarExtraHeight: CGFloat { get }
 }
 
 extension UIViewController {
@@ -65,8 +74,11 @@ extension UIViewController {
             consts[each] = nil
         }
         
-        savedConstant.setObject(consts as AnyObject, forKey: self)
-        savedObservers.setObject(observer as AnyObject, forKey: self)
+        let group = GroupItem()
+        group.handler = observer
+        group.constraints = consts
+        
+        savedObservers.setObject(group, forKey: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(actionKeyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -88,76 +100,64 @@ extension UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
-        savedConstant.removeObject(forKey: self)
         savedObservers.removeObject(forKey: self)
     }
     
     @objc func actionKeyboardWillShow(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willShow) {
-            if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
+            if let group = savedObservers.object(forKey: self) {
+                let saved = group.constraints
                 for each in saved {
                     let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
+                    let customHeight = (self as? AutoKeyboardOptions)?.customTabbarExtraHeight ?? 0
                     var iPhoneXExtra: CGFloat = 0
                     if #available(iOS 11.0, *) {
                         if view.safeAreaInsets.bottom > 0 {
                             iPhoneXExtra = view.safeAreaInsets.bottom
                         }
                     }
-                    each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight - iPhoneXExtra
+                    each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight - iPhoneXExtra - customHeight
                 }
                 animateWithKeyboardEventNotified(result: result)
-            }
-            
-            if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-                observer(result)
+                group.handler?(result)
             }
         }
     }
     
     @objc func actionKeyboardWillHide(notification: NSNotification) {
         if let result = decodeNotification(notification: notification, status: .willHide) {
-            if let saved = savedConstant.object(forKey: self) as? [NSLayoutConstraint: CGFloat] {
+            if let group = savedObservers.object(forKey: self) {
+                let saved = group.constraints
                 for each in saved {
                     each.key.constant = each.value
                 }
                 animateWithKeyboardEventNotified(result: result)
-            }
-            
-            if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-                observer(result)
+                group.handler?(result)
             }
         }
     }
     
     @objc func actionKeyboardDidShow(notification: NSNotification) {
-        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-            if let result = decodeNotification(notification: notification, status: .didShow) {
-                observer(result)
-            }
+        if let result = decodeNotification(notification: notification, status: .didShow) {
+            savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardDidHide(notification: NSNotification) {
-        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-            if let result = decodeNotification(notification: notification, status: .didHide) {
-                observer(result)
-            }
+        if let result = decodeNotification(notification: notification, status: .didHide) {
+            savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardWillChangeFrame(notification: NSNotification) {
-        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-            if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
-                observer(result)
-            }
+        if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
+            savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardDidChangeFrame(notification: NSNotification) {
-        if let observer = savedObservers.object(forKey: self) as? ((_ show: KeyboardResult) -> Void) {
-            if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
-                observer(result)
-            }
+        if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
+            savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
@@ -173,7 +173,8 @@ extension UIViewController {
                     (each.secondItem === safeArea &&
                         each.secondAttribute == .bottom &&
                         each.firstItem !== self.view &&
-                        each.firstAttribute == .bottom) {
+                        each.firstAttribute == .bottom)
+                {
                     consts.append(each)
                 }
             }
@@ -186,7 +187,8 @@ extension UIViewController {
                     (each.secondItem === guide &&
                         each.secondAttribute == .top &&
                         each.firstItem !== self.view &&
-                        each.firstAttribute == .bottom) {
+                        each.firstAttribute == .bottom)
+                {
                     consts.append(each)
                 }
             }
@@ -200,7 +202,8 @@ extension UIViewController {
                     (each.secondItem === guide &&
                         each.secondAttribute == .top &&
                         each.firstItem !== view &&
-                        each.firstAttribute == .bottom) {
+                        each.firstAttribute == .bottom)
+                {
                     consts.append(each)
                 }
             }
@@ -227,3 +230,4 @@ extension UIViewController {
         }, completion: nil)
     }
 }
+
