@@ -16,11 +16,9 @@ class ScrollViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         registerAutoKeyboard { result in
+            print("ScrollViewController: keyboard status \(result.status)")
             // to keep scroll position, also works with tableView
             // please restrict rotation, otherwise wont work correctly
             if result.status == .willChangeFrame && self.scrollView.reachedBottom {
@@ -30,11 +28,6 @@ class ScrollViewController: UIViewController {
                 }, completion: nil)
             }
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unRegisterAutoKeyboard()
     }
     
     @IBAction func bResingTap(_ sender: Any) {

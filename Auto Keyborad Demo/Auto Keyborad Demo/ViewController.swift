@@ -16,18 +16,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         registerAutoKeyboard(enable: [lblBottom], disable: [btnShowScrollBottom]) { result in
             print("keyboard status \(result.status)")
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        unRegisterAutoKeyboard()
     }
     
     @IBAction func bResingTap(_ sender: Any) {

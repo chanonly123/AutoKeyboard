@@ -89,7 +89,7 @@ extension UIViewController {
     }
     
     /**
-     Unregisters keyboard observers.
+     Unregisters keyboard observers. Can be called from deinit (optional).
      */
     public func unRegisterAutoKeyboard() {
         print("Unregistering AutoKeyboard from: \(NSStringFromClass(type(of: self)))")
@@ -104,6 +104,7 @@ extension UIViewController {
     }
     
     @objc func actionKeyboardWillShow(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .willShow) {
             if let group = savedObservers.object(forKey: self) {
                 let saved = group.constraints
@@ -125,6 +126,7 @@ extension UIViewController {
     }
     
     @objc func actionKeyboardWillHide(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .willHide) {
             if let group = savedObservers.object(forKey: self) {
                 let saved = group.constraints
@@ -138,24 +140,28 @@ extension UIViewController {
     }
     
     @objc func actionKeyboardDidShow(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .didShow) {
             savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardDidHide(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .didHide) {
             savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardWillChangeFrame(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .willChangeFrame) {
             savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardDidChangeFrame(notification: NSNotification) {
+        if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
             savedObservers.object(forKey: self)?.handler?(result)
         }
@@ -228,6 +234,19 @@ extension UIViewController {
         UIView.animate(withDuration: result.duration, delay: 0.0, options: [result.options], animations: { [weak self] () -> Void in
             self!.view.layoutIfNeeded()
         }, completion: nil)
+    }
+    
+}
+
+extension UIView {
+    var firstResponder: UIView? {
+        guard !isFirstResponder else { return self }
+        for subview in subviews {
+            if let firstResponder = subview.firstResponder {
+                return firstResponder
+            }
+        }
+        return nil
     }
 }
 

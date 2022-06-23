@@ -15,7 +15,7 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 - Automatic bottom constraints changes with keyboard
 - Resizing with animation.
 - No need to write extra code.
-- Just `registerAutoKeyboard ` and `unRegisterAutoKeyboard `.
+- Just `registerAutoKeyboard ` in `viewDidLoad`.
 - Callback support on keyboard willShow, didShow, willHide, didHide, willChangeFrame, didChangeFrame.
 - Example for keeping scroll position of scrollView
 - Ability to Register or Disable other constraints 
@@ -31,12 +31,8 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 - Add constrainsts to `bottomLayoutGuide` or `safeAreaLayoutGuide` and they will update when keyboard appears.
 - And Register your specific ViewController, you should also unregister.
 ```Swift
-override func viewWillAppear(_ animated: Bool) {
-registerAutoKeyboard()
-}
-
-override func viewWillDisappear(_ animated: Bool) {
-unRegisterAutoKeyboard()
+override func viewDidLoad() {
+    registerAutoKeyboard()
 }
 ```
 ### Advanced Usage

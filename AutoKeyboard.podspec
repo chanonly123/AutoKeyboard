@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AutoKeyboard"
-  s.version      = "1.4.7"
+  s.version      = "1.4.8"
   s.summary      = "Automatic Keyboard handling with ease"
   s.description  = "Automatic bottom constraints changes with extreamly easy integration."
   s.homepage  	 = "https://github.com/chanonly123/AutoKeyboard"
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-s.source       = { :git => "https://github.com/chanonly123/AutoKeyboard.git", :tag => "1.4.7" }
+s.source       = { :git => "https://github.com/chanonly123/AutoKeyboard.git", :tag => "1.4.8" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
