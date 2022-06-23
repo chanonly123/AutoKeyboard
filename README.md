@@ -29,7 +29,7 @@ Automatic Keyboard handling with ease. It is fully automatic keyboard handling. 
 ### Basic Usage
 ![Alt text](https://github.com/chanonly123/AutoKeyboard/blob/master/help.png)<br />
 - Add constrainsts to `bottomLayoutGuide` or `safeAreaLayoutGuide` and they will update when keyboard appears.
-- And Register your specific ViewController, you should also unregister.
+- And just Register your specific ViewController.
 ```Swift
 override func viewDidLoad() {
     registerAutoKeyboard()
