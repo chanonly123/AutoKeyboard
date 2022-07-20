@@ -25,6 +25,12 @@ class ViewController: UIViewController {
     @IBAction func bResingTap(_ sender: Any) {
         tfAny.resignFirstResponder()
     }
+    
+    @IBAction func presentAlertTap(_ sender: Any) {
+        let alert = UIAlertController(title: "Test", message: "Test message", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .cancel))
+        present(alert, animated: true)
+    }
 }
 
 extension ViewController: AutoKeyboardOptions {

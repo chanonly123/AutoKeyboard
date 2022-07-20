@@ -11,6 +11,7 @@ import UIKit
 class GroupItem {
     var handler: ((_ show: KeyboardResult) -> Void)?
     var constraints = [NSLayoutConstraint: CGFloat]()
+    var willShowCalled = false
 }
 
 private var savedObservers = NSMapTable<UIViewController, GroupItem>(keyOptions: .weakMemory, valueOptions: .strongMemory)
@@ -103,46 +104,48 @@ extension UIViewController {
         savedObservers.removeObject(forKey: self)
     }
     
+    func getTopController() -> UIViewController? {
+        if var topController = UIApplication.shared.windows.first?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
+        }
+        return nil
+    }
+    
     @objc func actionKeyboardWillShow(notification: NSNotification) {
         if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .willShow) {
             if let group = savedObservers.object(forKey: self) {
-                let saved = group.constraints
-                for each in saved {
-                    let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
-                    let customHeight = (self as? AutoKeyboardOptions)?.customTabbarExtraHeight ?? 0
-                    var iPhoneXExtra: CGFloat = 0
-                    if #available(iOS 11.0, *) {
-                        if view.safeAreaInsets.bottom > 0 {
-                            iPhoneXExtra = view.safeAreaInsets.bottom
-                        }
-                    }
-                    each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight - iPhoneXExtra - customHeight
-                }
-                animateWithKeyboardEventNotified(result: result)
-                group.handler?(result)
+                group.willShowCalled = true
+                keyboardShow(result: result)
             }
+        }
+    }
+    
+    @objc func actionKeyboardDidShow(notification: NSNotification) {
+        var groupItem: GroupItem?
+        defer {
+            groupItem?.willShowCalled = false
+        }
+        if view.firstResponder == nil { return }
+        if let result = decodeNotification(notification: notification, status: .didShow) {
+            if let group = savedObservers.object(forKey: self) {
+                groupItem = group
+                if !group.willShowCalled {
+                    keyboardShow(result: result)
+                    return
+                }
+            }
+            savedObservers.object(forKey: self)?.handler?(result)
         }
     }
     
     @objc func actionKeyboardWillHide(notification: NSNotification) {
         if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .willHide) {
-            if let group = savedObservers.object(forKey: self) {
-                let saved = group.constraints
-                for each in saved {
-                    each.key.constant = each.value
-                }
-                animateWithKeyboardEventNotified(result: result)
-                group.handler?(result)
-            }
-        }
-    }
-    
-    @objc func actionKeyboardDidShow(notification: NSNotification) {
-        if view.firstResponder == nil { return }
-        if let result = decodeNotification(notification: notification, status: .didShow) {
-            savedObservers.object(forKey: self)?.handler?(result)
+            keyboardHide(result: result)
         }
     }
     
@@ -164,6 +167,36 @@ extension UIViewController {
         if view.firstResponder == nil { return }
         if let result = decodeNotification(notification: notification, status: .didChangeFrame) {
             savedObservers.object(forKey: self)?.handler?(result)
+        }
+    }
+    
+    private func keyboardShow(result: KeyboardResult) {
+        if let group = savedObservers.object(forKey: self) {
+            let saved = group.constraints
+            for each in saved {
+                let tabBarHeight: CGFloat = (tabBarController?.tabBar.isHidden ?? true) ? 0 : tabBarController?.tabBar.bounds.height ?? 0
+                let customHeight = (self as? AutoKeyboardOptions)?.customTabbarExtraHeight ?? 0
+                var iPhoneXExtra: CGFloat = 0
+                if #available(iOS 11.0, *) {
+                    if view.safeAreaInsets.bottom > 0 {
+                        iPhoneXExtra = view.safeAreaInsets.bottom
+                    }
+                }
+                each.key.constant = each.value + result.keyboardFrameEnd.height - tabBarHeight - iPhoneXExtra - customHeight
+            }
+            animateWithKeyboardEventNotified(result: result)
+            group.handler?(result)
+        }
+    }
+    
+    private func keyboardHide(result: KeyboardResult) {
+        if let group = savedObservers.object(forKey: self) {
+            let saved = group.constraints
+            for each in saved {
+                each.key.constant = each.value
+            }
+            animateWithKeyboardEventNotified(result: result)
+            group.handler?(result)
         }
     }
     

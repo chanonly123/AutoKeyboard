@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0ep-si-YxG">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,9 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="image1" translatesAutoresizingMaskIntoConstraints="NO" id="GjC-Kb-O3B">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOd-Ig-xDy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOd-Ig-xDy">
                                 <rect key="frame" x="16" y="621" width="109" height="30"/>
                                 <color key="backgroundColor" red="0.18779608607292175" green="0.51187342405319214" blue="0.69045674800872803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,12 +32,11 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YlA-tt-T3a">
-                                <rect key="frame" x="20" y="72" width="335" height="30"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="20" y="52" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NP-Se-tuI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1NP-Se-tuI">
                                 <rect key="frame" x="141" y="621" width="218" height="30"/>
                                 <color key="backgroundColor" red="0.18779608607292175" green="0.51187342405319214" blue="0.69045674800872803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,6 +51,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewF-LZ-We8">
+                                <rect key="frame" x="135" y="102" width="105" height="34"/>
+                                <color key="backgroundColor" red="0.18779608610000001" green="0.51187342410000003" blue="0.69045674800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="contentEdgeInsets" minX="16" minY="8" maxX="16" maxY="8"/>
+                                <state key="normal" title="Show alert"/>
+                                <connections>
+                                    <action selector="presentAlertTap:" destination="Tu2-nt-tDa" eventType="touchUpInside" id="YWv-Ro-5DS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -61,6 +68,7 @@
                             <constraint firstItem="1NP-Se-tuI" firstAttribute="leading" secondItem="vOd-Ig-xDy" secondAttribute="trailing" constant="16" id="FaM-Lo-7ae"/>
                             <constraint firstItem="1NP-Se-tuI" firstAttribute="trailing" secondItem="Ug3-vt-BUj" secondAttribute="trailingMargin" id="G3d-QJ-lsn"/>
                             <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="vOd-Ig-xDy" secondAttribute="bottom" constant="16" id="PO7-eS-dfZ"/>
+                            <constraint firstItem="ewF-LZ-We8" firstAttribute="centerX" secondItem="Ug3-vt-BUj" secondAttribute="centerX" id="S8I-2m-MXC"/>
                             <constraint firstItem="vOd-Ig-xDy" firstAttribute="width" secondItem="1NP-Se-tuI" secondAttribute="width" multiplier="1:2" id="TEd-RX-DJx"/>
                             <constraint firstItem="YlA-tt-T3a" firstAttribute="top" secondItem="ZU4-Dn-Oq8" secondAttribute="bottom" constant="8" id="Wen-in-OcY"/>
                             <constraint firstItem="TS8-c0-Gak" firstAttribute="top" secondItem="1NP-Se-tuI" secondAttribute="bottom" constant="16" id="etB-DA-hdI"/>
@@ -73,6 +81,7 @@
                             <constraint firstAttribute="trailing" secondItem="GjC-Kb-O3B" secondAttribute="trailing" id="qdT-G4-XzE"/>
                             <constraint firstAttribute="bottomMargin" secondItem="7WY-Fq-9Zr" secondAttribute="bottom" constant="100" id="qs0-M8-BHP"/>
                             <constraint firstItem="YlA-tt-T3a" firstAttribute="leading" secondItem="Ug3-vt-BUj" secondAttribute="leadingMargin" constant="4" id="w7W-oR-Pxt"/>
+                            <constraint firstItem="ewF-LZ-We8" firstAttribute="top" secondItem="YlA-tt-T3a" secondAttribute="bottom" constant="16" id="xSL-Ie-owR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Auto Keyboard Demo" id="M1y-Rb-pcO"/>
@@ -102,22 +111,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMq-lg-pHz">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="934.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="918.5"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Df-fi-ZeY">
-                                                <rect key="frame" x="35" y="869.5" width="305" height="30"/>
-                                                <nil key="textColor"/>
+                                                <rect key="frame" x="35" y="849.5" width="305" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyp-FP-h0W">
-                                                <rect key="frame" x="35" y="804.5" width="305" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyp-FP-h0W">
+                                                <rect key="frame" x="35" y="784.5" width="305" height="30"/>
                                                 <state key="normal" title="Resign"/>
                                                 <connections>
                                                     <action selector="bResingTap:" destination="BGR-We-ubx" eventType="touchUpInside" id="fN9-2a-v4G"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-Te-LCw">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pc7-Te-LCw">
                                                 <rect key="frame" x="35" y="30" width="305" height="40"/>
                                                 <state key="normal" title="Resign"/>
                                                 <connections>
@@ -125,7 +133,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23U-49-MBH">
-                                                <rect key="frame" x="35" y="100" width="305" height="669.5"/>
+                                                <rect key="frame" x="35" y="100" width="305" height="649.5"/>
                                                 <string key="text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -186,7 +194,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ep-si-YxG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7et-6K-97e">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
